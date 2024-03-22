@@ -1,0 +1,2 @@
+# UploadFileToGit
+本项目准备用于集成coze，将coze中通过agent生成的代码文件上传到git项目中。由于coze生成的代码不能保持，只能尝试通过提供给它plugin的方法，在vercel部署一个serverless接口，也就是本项目的内容，接口会以文件内容、git上传路径等作为入参，实现代码上传到git的功能。
