@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
         });
         sha = response.data.sha;
       } catch (error) {
+        console.error(error);
         // 如果文件不存在，则不做处理，因为GitHub会自动创建新文件
       }
 
