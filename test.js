@@ -4,10 +4,10 @@ const {uploadCore}= require('./core/uploadCore');
 
 const GITHUB_token = ''; // 使用你的GitHub个人访问令牌
 const path = "README1.md"; // 修改文件路径
-const content = "新的文件内容";
-const message = "first try";
 const owner = "jayliangdl";
 const repo = "sync_project_code_from_coze_20240322";
+const content = "新的文件内容";
+const message = "first try";
 const branch = "main";
 const sha = "";
 

@@ -1,4 +1,4 @@
-const {uploadCore} = require('./core/uploadCore');
+const {uploadCore} = require('../core/uploadCore');
 
 // Vercel Serverless函数接口
 module.exports = async (req, res) => {

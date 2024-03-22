@@ -1,4 +1,4 @@
-const {existsCore} = require('./core/existsCore');
+const {existsCore} = require('../core/existsCore');
 
 // Vercel Serverless函数接口
 module.exports = async (req, res) => {
