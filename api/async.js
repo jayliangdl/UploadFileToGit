@@ -1,8 +1,8 @@
-const { Octokit } = require("@octokit/rest");
+// const { Octokit } = require("@octokit/rest");
 module.exports = async (req, res) => {
 
   const githubToken = process.env.github_token;
-  const octokit = new Octokit({ auth: githubToken });
+  // const octokit = new Octokit({ auth: githubToken });
 res.status(200).send('Hello World!');
   // try {
   //   // 假设你要更新的文件路径、内容和commit信息
