@@ -1,4 +1,4 @@
-// const { Octokit } = require("@octokit/rest");
+const { Octokit } = require("@octokit/rest");
 module.exports = async (req, res) => {
 
   const githubToken = process.env.github_token;
