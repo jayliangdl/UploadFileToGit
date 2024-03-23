@@ -1,5 +1,6 @@
 // api/hello.js
 module.exports = (req, res) => {
-  
-  res.status(200).send('Hello World!');
+  result = {"text":"Hello World"};
+  res.status(200).json(result);
+  // res.status(200).send('Hello World!');
 };
