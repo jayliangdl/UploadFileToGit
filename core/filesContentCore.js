@@ -16,7 +16,9 @@ function convert(encodedContent){
 // 核心逻辑函数
 async function filesContentCore(owner, repo, paths, GITHUB_token) {
     const promises = paths.map(path=>fileContent(owner, repo, path, GITHUB_token));
-    return Promise.all(promises).then(results => results);
+    return Promise.all(promises).then(results => {
+      return {"data": results}
+    });
 }
 
 async function fileContent(owner, repo, path, GITHUB_token){
