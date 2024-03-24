@@ -15,7 +15,6 @@ function convert(encodedContent){
 
 // 核心逻辑函数
 async function fileContentCore(owner, repo, path, GITHUB_token) {
-  console.log('fileContentCore.js');
   return new Promise((resolve, reject) => {
     console.log(`/repos/${owner}/${repo}/contents/${path}`)
     const options = {
@@ -39,13 +38,15 @@ async function fileContentCore(owner, repo, path, GITHUB_token) {
           resolve({
             path: response.path,
             sha: response.sha,
+            exists: "true",
             content: convert(encodedContent)
           });
         } else if (res.statusCode === 404) {
           resolve({
             path,
             sha: "",
-            exists: "false"
+            exists: "false",
+            content: null
           });
         } else {
           reject(new Error('Failed to fetch file info'));
