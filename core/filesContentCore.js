@@ -14,9 +14,13 @@ function convert(encodedContent){
 }
 
 // 核心逻辑函数
-async function fileContentCore(owner, repo, path, GITHUB_token) {
-  return new Promise((resolve, reject) => {
-    console.log(`/repos/${owner}/${repo}/contents/${path}`)
+async function filesContentCore(owner, repo, paths, GITHUB_token) {
+    const promises = paths.map(path=>fileContent(owner, repo, path, GITHUB_token));
+    return Promise.all(promises).then(results => results);
+}
+
+async function fileContent(owner, repo, path, GITHUB_token){
+  return new Promise((resolve,reject)=>{
     const options = {
       hostname: 'api.github.com',
       path: `/repos/${owner}/${repo}/contents/${path}`,
@@ -27,7 +31,7 @@ async function fileContentCore(owner, repo, path, GITHUB_token) {
         'Content-Type': 'application/json'
       }
     };
-
+  
     const req = https.request(options, res => {
       let body = '';
       res.on('data', chunk => body += chunk);
@@ -53,9 +57,10 @@ async function fileContentCore(owner, repo, path, GITHUB_token) {
         }
       });
     });
-
-    req.on('error', error => reject(error));
+    req.on('error', err => {
+      reject(err);
+    });
     req.end();
   });
 }
-module.exports= {fileContentCore};
+module.exports= {filesContentCore};

@@ -1,6 +1,6 @@
 const {existsCore} = require('./core/existsCore');
 const {uploadCore}= require('./core/uploadCore');
-const {fileContentCore}= require('./core/fileContentCore');
+const {filesContentCore}= require('./core/filesContentCore');
 
 const GITHUB_token = ''; // 使用你的GitHub个人访问令牌
 const path = "src/com/xxxx/user/dao/UserDao.java"; // 修改文件路径
@@ -10,6 +10,11 @@ const content = "新的文件内容1112222";
 const message = "first try";
 const branch = "main";
 const sha = "";
+
+const paths = [
+  "src/com/xxxx/user/dao/UserDao.java",
+  "src/com/xxxx/user/dto/request/AddUserRequest.java"
+]; // 修改文件路径
 
 // 测试 exists API
 // existsCore(owner, repo, path, GITHUB_token)
@@ -22,6 +27,6 @@ const sha = "";
 //   .then(result => console.log('Upload API Result:', result))
 //   .catch(error => console.error('Upload API Error:', error));
 
-fileContentCore(owner, repo, path, GITHUB_token)
+filesContentCore(owner, repo, paths, GITHUB_token)
   .then(result => console.log('Exists API Result:', result))
   .catch(error => console.error('Exists API Error:', error));

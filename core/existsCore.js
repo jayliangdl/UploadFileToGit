@@ -2,7 +2,7 @@ const https = require('https');
 
 // 核心逻辑函数
 async function existsCore(owner, repo, path, GITHUB_token) {
-  console.log('existsCore.js');
+
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.github.com',
@@ -14,7 +14,6 @@ async function existsCore(owner, repo, path, GITHUB_token) {
         'Content-Type': 'application/json'
       }
     };
-    console.log(`options+${JSON.stringify(options)}`);
 
     const req = https.request(options, res => {
       let body = '';
