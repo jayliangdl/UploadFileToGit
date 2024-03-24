@@ -1,14 +1,8 @@
 const https = require('https');
 
 // 核心逻辑函数
-async function existsCore(owner, repo, paths, GITHUB_token) {
-  const existsOnePathsPromise = paths.map(path=>{return existsOnePath(owner,repo,path,GITHUB_token)});
-  return Promise.all(existsOnePathsPromise).then(result =>{
-    return {'data':result};
-  })
-}
+async function existsCore(owner, repo, path, GITHUB_token) {
 
-async function existsOnePath(owner, repo, path, GITHUB_token){
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.github.com',
@@ -48,5 +42,4 @@ async function existsOnePath(owner, repo, path, GITHUB_token){
     req.end();
   });
 }
-
 module.exports= {existsCore};
